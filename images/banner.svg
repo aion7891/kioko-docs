@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Kioko</title>
+  <desc id="desc">Kioko: pluggable long-term memory for AI agents</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e1b4b"/>
+      <stop offset="0.5" stop-color="#4c1d95"/>
+      <stop offset="1" stop-color="#9d174d"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="0.5" stop-color="#c4b5fd"/>
+      <stop offset="1" stop-color="#f9a8d4"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f0abfc" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f0abfc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="300" rx="24" fill="url(#bg)"/>
+  <circle cx="930" cy="150" r="190" fill="url(#glow)"/>
+
+  <!-- memory graph -->
+  <g stroke="#e9d5ff" stroke-opacity="0.45" stroke-width="2" fill="none">
+    <path d="M790 80 L900 130 L1030 70 M900 130 L870 230 L1000 220 L1030 70 M900 130 L1000 220 M1030 70 L1120 150 L1000 220 M790 80 L760 190 L870 230"/>
+  </g>
+  <g>
+    <circle cx="790" cy="80" r="10" fill="#67e8f9"/>
+    <circle cx="900" cy="130" r="16" fill="#f472b6"/>
+    <circle cx="1030" cy="70" r="11" fill="#a78bfa"/>
+    <circle cx="870" cy="230" r="9" fill="#fbbf24"/>
+    <circle cx="1000" cy="220" r="13" fill="#34d399"/>
+    <circle cx="1120" cy="150" r="8" fill="#67e8f9"/>
+    <circle cx="760" cy="190" r="7" fill="#f9a8d4"/>
+  </g>
+
+  <text x="70" y="150" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="96" font-weight="800" fill="url(#text)" letter-spacing="-2">Kioko</text>
+  <text x="360" y="150" font-family="'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif" font-size="56" font-weight="700" fill="#ffffff" fill-opacity="0.85">記憶</text>
+  <text x="72" y="200" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#ede9fe">Pluggable long-term memory for AI agents</text>
+  <text x="72" y="238" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" fill="#c4b5fd">any framework · any language · any MCP host</text>
+</svg>
