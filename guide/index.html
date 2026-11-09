@@ -1,0 +1,2214 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Pluggable, self-managing long-term memory for AI agents">
+      
+      
+      
+        <link rel="canonical" href="https://aion7891.github.io/kioko-docs/guide/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../whats-inside/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Guide - Kioko</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kioko-guide-add-memory-to-your-agent" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kioko" class="md-header__button md-logo" aria-label="Kioko" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kioko
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../memory-types/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Memory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../attach/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Use it
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cookbook/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cookbook
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../deploy/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Production
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kioko" class="md-nav__button md-logo" aria-label="Kioko" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"/></svg>
+
+    </a>
+    Kioko
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-your-first-memory-five-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Your first memory (five lines)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-agent-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The agent loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-attach-to-a-framework-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Attach to a framework instead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-persist-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Persist it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tell-it-things-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Tell it things directly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-let-a-model-manage-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Let a model manage memory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Let a model manage memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-memories-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How memories connect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-run-it-as-a-service-for-any-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Run it as a service (for any language)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-mcp-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. MCP hosts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-look-inside-the-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Look inside: the console
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-keep-it-healthy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Keep it healthy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-production-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Production checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-configuration-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Configuration reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whats-inside/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's inside
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Memory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intelligence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intelligence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use it
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Use it
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attach to any agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service and REST API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webhooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webhooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy and operate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extend Kioko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-your-first-memory-five-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Your first memory (five lines)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-agent-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The agent loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-attach-to-a-framework-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Attach to a framework instead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-persist-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Persist it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tell-it-things-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Tell it things directly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-let-a-model-manage-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Let a model manage memory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Let a model manage memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-memories-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How memories connect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-run-it-as-a-service-for-any-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Run it as a service (for any language)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-mcp-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. MCP hosts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-look-inside-the-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Look inside: the console
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-keep-it-healthy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Keep it healthy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-production-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Production checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-configuration-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Configuration reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="kioko-guide-add-memory-to-your-agent">Kioko guide: add memory to your agent<a class="headerlink" href="#kioko-guide-add-memory-to-your-agent" title="Permanent link">&para;</a></h1>
+<p>This guide takes a new user from installation to a production setup. It follows one realistic project
+throughout: a <strong>plant support assistant</strong> for controls engineers that remembers who each engineer is, what
+they are working towards, which procedures fix which faults, what the team decided, and what worked.</p>
+<ol>
+<li><a href="#1-install">Install</a></li>
+<li><a href="#2-your-first-memory-five-lines">Your first memory</a></li>
+<li><a href="#3-the-agent-loop">The agent loop</a></li>
+<li><a href="#4-attach-to-a-framework-instead">Attach to a framework</a></li>
+<li><a href="#5-persist-it">Persist it</a></li>
+<li><a href="#6-tell-it-things-directly">Tell it things directly</a></li>
+<li><a href="#7-let-a-model-manage-memory">Let a model manage memory</a></li>
+<li><a href="#8-run-it-as-a-service-for-any-language">Run it as a service</a></li>
+<li><a href="#9-mcp-hosts">MCP hosts</a></li>
+<li><a href="#10-look-inside-the-console">Look inside: the console</a></li>
+<li><a href="#11-keep-it-healthy">Keep it healthy</a></li>
+<li><a href="#12-production-checklist">Production checklist</a></li>
+<li><a href="#13-configuration-reference">Configuration reference</a></li>
+<li><a href="#14-troubleshooting">Troubleshooting</a></li>
+</ol>
+<p>The other documents go deeper: <a href="../memory-types/">memory types</a> covers each of the 15 kinds,
+<a href="../intelligence/">intelligence</a> the self-managing mode, <a href="../stores/">stores</a> SQLite, pgvector and Qdrant,
+<a href="../console/">console</a> the web UI, and the <a href="../cookbook/">cookbook</a> has runnable recipes with their output.</p>
+<hr />
+<h2 id="1-install">1. Install<a class="headerlink" href="#1-install" title="Permanent link">&para;</a></h2>
+<p>Kioko needs <strong>Python 3.14</strong> or newer. The core has <strong>no dependencies</strong>: storage, the offline embedder, the
+extraction rules, the intelligence, the REST and MCP server and the web console all use the standard library.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>kioko<span class="w">                 </span><span class="c1"># the core</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"kioko[pgvector]"</span><span class="w">     </span><span class="c1"># + Postgres / pgvector (psycopg)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"kioko[agno]"</span><span class="w">         </span><span class="c1"># + the Agno adapter</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w">                     </span><span class="c1"># or from the source folder</span>
+</code></pre></div>
+<p>On Windows, use the launcher: <code>py -3.14 -m pip install ...</code>. To check the installation, run <code>kioko demo</code>. It
+runs a scripted conversation with the offline demo agent.</p>
+<hr />
+<h2 id="2-your-first-memory-five-lines">2. Your first memory (five lines)<a class="headerlink" href="#2-your-first-memory-five-lines" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kioko</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"sqlite:///plant-memory.db"</span><span class="p">)</span>      <span class="c1"># a file next to your code; nothing else to set up</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># After each exchange, hand the turn to Kioko. It decides what is worth keeping, and where.</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">memory</span><span class="o">.</span><span class="n">record_turn</span><span class="p">(</span><span class="s2">"Hi, I'm Asha, a controls engineer at the Oslo plant. I prefer short answers."</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>                   <span class="s2">"Nice to meet you, Asha!"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s2">"mon-shift"</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">memory</span><span class="o">.</span><span class="n">record_turn</span><span class="p">(</span><span class="s2">"My goal is to get line 3 OEE above 85% by December 31."</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>                   <span class="s2">"Noted - let's track it."</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s2">"mon-shift"</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">memory</span><span class="o">.</span><span class="n">record_turn</span><span class="p">(</span><span class="s2">"To reset the safety relay, switch off the main breaker, then press reset for 5 seconds, "</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>                   <span class="s2">"then switch the breaker back on."</span><span class="p">,</span> <span class="s2">"Thanks, saved."</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s2">"mon-shift"</span><span class="p">)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># Before each answer, ask Kioko what the agent should know.</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">ctx</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="s2">"The safety relay tripped again - what do I do?"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s2">"tue-shift"</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&lt;memory&gt;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Long-term memory about the user. Use it to personalise your answer. If it conflicts with the user's latest message, trust the latest message. Do not mention this block unless asked.
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Instructions from the user:
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>- User prefers short answers.
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>About the user:
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>- User is a controls engineer.
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>- User works at the Oslo plant.
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>- User's name is Asha.
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>The user's open goals:
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>- Get line 3 OEE above 85% by December 31 (medium, 0%, due 2026-12-31)
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>Procedures that may apply:
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>- reset the safety relay: 1) Switch off the main breaker; 2) Press reset for 5 seconds; 3) Switch the breaker back on
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>&lt;/memory&gt;
+</code></pre></div>
+<p>Each part of the conversation went to the kind of memory where it belongs:</p>
+<ul>
+<li>name, role and employer became <strong>profile</strong> slots;</li>
+<li>"I prefer short answers" is about how to answer, so it became a standing <strong>instruction</strong>;</li>
+<li>the goal became a <strong>goal</strong> with a due date;</li>
+<li>the how-to became a <strong>procedure</strong> with ordered steps.</li>
+</ul>
+<p>The question the next day was recognised as a how-to, so the procedure was retrieved first. Nothing was
+configured, and no model was called. That is <code>kioko.intelligent()</code>: see <a href="../intelligence/">intelligence</a>.</p>
+<blockquote>
+<p>Prefer full control? <code>kioko.MemoryLayer.sqlite("plant-memory.db")</code> gives you the same memory without the
+self-management. <code>learn()</code> then extracts with rules, and <code>recall()</code> retrieves every kind with fixed caps.
+You can switch at any time with <code>MemoryLayer(..., intelligence=True)</code>.</p>
+</blockquote>
+<hr />
+<h2 id="3-the-agent-loop">3. The agent loop<a class="headerlink" href="#3-the-agent-loop" title="Permanent link">&para;</a></h2>
+<p>Whatever your agent looks like, memory takes three lines per turn: <strong>recall → answer → record</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kioko</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"sqlite:///plant-memory.db"</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">user</span><span class="p">,</span> <span class="n">session</span> <span class="o">=</span> <span class="s2">"asha"</span><span class="p">,</span> <span class="s2">"tue-shift"</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_llm</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="sd">"""Stand-in for your model call (OpenAI, Azure OpenAI, Anthropic, a local model ...)."""</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"[model answer, using </span><span class="si">{</span><span class="n">system</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'- '</span><span class="p">)</span><span class="si">}</span><span class="s2"> memory lines]"</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">answer</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">ctx</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>                       <span class="c1"># 1. remember</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">reply</span> <span class="o">=</span> <span class="n">call_llm</span><span class="p">(</span><span class="s2">"You are a plant support assistant.</span><span class="se">\n\n</span><span class="s2">"</span> <span class="o">+</span> <span class="n">ctx</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>       <span class="c1"># 2. answer</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="n">memory</span><span class="o">.</span><span class="n">record_turn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>                 <span class="c1"># 3. learn</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="k">return</span> <span class="n">reply</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"The safety relay on line 3 tripped again, ticket INC-7731."</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>                <span class="s2">"That worked, thanks!"</span><span class="p">,</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>                <span class="s2">"We switched the line 3 HMI from LegacyHMI to Nimbus HMI Studio because of remote access."</span><span class="p">,</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>                <span class="s2">"I'm about 40</span><span class="si">% o</span><span class="s2">f the way to the OEE target."</span><span class="p">]:</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"asha  &gt; </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">agent &gt; </span><span class="si">{</span><span class="n">answer</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">working memory:"</span><span class="p">,</span> <span class="n">memory</span><span class="o">.</span><span class="n">working</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">snapshot</span><span class="p">())</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"goal:"</span><span class="p">,</span> <span class="n">memory</span><span class="o">.</span><span class="n">goals</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="p">())</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"procedure track record:"</span><span class="p">,</span> <span class="n">memory</span><span class="o">.</span><span class="n">procedures</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">successes</span><span class="p">,</span> <span class="s2">"success"</span><span class="p">)</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"decisions:"</span><span class="p">,</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">line</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">memory</span><span class="o">.</span><span class="n">decisions</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)])</span>
+</code></pre></div>
+<p>Output (after the five-line example above):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>asha  &gt; The safety relay on line 3 tripped again, ticket INC-7731.
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>agent &gt; [model answer, using 6 memory lines]
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>asha  &gt; That worked, thanks!
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>agent &gt; [model answer, using 6 memory lines]
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>asha  &gt; We switched the line 3 HMI from LegacyHMI to Nimbus HMI Studio because of remote access.
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>agent &gt; [model answer, using 8 memory lines]
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>asha  &gt; I'm about 40% of the way to the OEE target.
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>agent &gt; [model answer, using 6 memory lines]
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>working memory: {'ticket': 'INC-7731'}
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>goal: Get line 3 OEE above 85% by December 31 (medium, 40%, due 2026-12-31)
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>procedure track record: 1 success
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>decisions: ['line 3 HMI: chose Nimbus HMI Studio because of remote access (accepted 2026-10-27)']
+</code></pre></div>
+<p>Without being asked, Kioko:</p>
+<ul>
+<li>kept the ticket number in the session's <strong>working memory</strong>;</li>
+<li>credited "that worked" to the procedure the agent had just used;</li>
+<li>logged the HMI <strong>decision</strong> with its reason;</li>
+<li>moved the OEE <strong>goal</strong> to 40%.</li>
+</ul>
+<p>With a real model, <code>call_llm</code> is a few lines. For example, with Azure OpenAI:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureOpenAI</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">AzureOpenAI</span><span class="p">(</span><span class="n">azure_endpoint</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"AZURE_OPENAI_ENDPOINT"</span><span class="p">],</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">"2024-10-21"</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># key: AZURE_OPENAI_API_KEY, or azure_ad_token_provider=... for Entra ID</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_llm</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">reply</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"AZURE_OPENAI_DEPLOYMENT"</span><span class="p">],</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>                                           <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">system</span><span class="p">},</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>                                                     <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">user_message</span><span class="p">}])</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="k">return</span> <span class="n">reply</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+</code></pre></div>
+<p>To get the most from provider prompt caching, use <code>memory.kv.openai_messages(...)</code> or
+<code>memory.kv.anthropic_system(...)</code>. They put the stable part of the memory first, byte-identical from turn to
+turn (see <a href="../memory-types/#13-kv-cache-memory">KV-cache memory</a>).</p>
+<hr />
+<h2 id="4-attach-to-a-framework-instead">4. Attach to a framework instead<a class="headerlink" href="#4-attach-to-a-framework-instead" title="Permanent link">&para;</a></h2>
+<p>If your agent is built with a framework, <code>attach()</code> adds the same loop in one line. It recalls before each run
+and records after it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">kioko</span><span class="w"> </span><span class="kn">import</span> <span class="n">attach</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">attach</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>                         <span class="c1"># Agno agent: hooks + memory tools</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">attach</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>                         <span class="c1"># LangChain runnable / LangGraph graph (user and thread from config)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">crew</span> <span class="o">=</span> <span class="n">attach</span><span class="p">(</span><span class="n">crew</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">input_key</span><span class="o">=</span><span class="s2">"topic"</span><span class="p">)</span>        <span class="c1"># CrewAI crew: which input holds the user's text</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">attach</span><span class="p">(</span><span class="n">my_function</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>                  <span class="c1"># any function: answer(message, user_id=..., session_id=...)</span>
+</code></pre></div>
+<p>It works with Agno, LangChain, LangGraph, CrewAI, the OpenAI Agents SDK, AutoGen, smolagents, Semantic Kernel,
+your own classes and plain functions. For more control there are building blocks:</p>
+<ul>
+<li>the <code>@with_memory</code> decorator;</li>
+<li><code>MemoryMiddleware(memory).before(...)</code> / <code>.after(...)</code>;</li>
+<li><code>memory.inject(messages, user_id=...)</code> for OpenAI-style message lists;</li>
+<li><code>memory.tools(user_id=...)</code>: save / search / update / delete tools your agent can call itself.</li>
+</ul>
+<p><a href="../attach/">Attach to any agent</a> has framework-specific notes, and <code>examples/</code> has runnable
+examples (<code>02_agno_agent.py</code>, <code>03_any_agent.py</code>, <code>05_frameworks_attach.py</code>).</p>
+<hr />
+<h2 id="5-persist-it">5. Persist it<a class="headerlink" href="#5-persist-it" title="Permanent link">&para;</a></h2>
+<p>The memory lives wherever the URL says. Change one string and the code stays the same:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"sqlite:///plant-memory.db"</span><span class="p">)</span>                         <span class="c1"># one file</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"postgresql://kioko:&lt;password&gt;@db:5432/kioko"</span><span class="p">)</span>      <span class="c1"># Postgres + pgvector</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"qdrant://qdrant:6333/plant_memories"</span><span class="p">)</span>              <span class="c1"># Qdrant</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"http://memory-service:8765"</span><span class="p">)</span>                           <span class="c1"># a shared Kioko service</span>
+</code></pre></div>
+<p><code>docker compose -f docker-compose.stores.yml up -d</code> starts Postgres with pgvector, Qdrant and a Kioko service
+locally. <a href="../stores/">Stores</a> covers set-up, indexes, switching embedders (<code>memory.reembed()</code>) and writing your
+own store.</p>
+<p>Use a <strong>semantic embedder</strong> in production. The default one is offline and lexical: it matches words, not
+meaning.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">kioko</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureOpenAIEmbedder</span><span class="p">,</span> <span class="n">OpenAIEmbedder</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"postgresql://..."</span><span class="p">,</span> <span class="n">embedder</span><span class="o">=</span><span class="n">AzureOpenAIEmbedder</span><span class="p">(</span><span class="n">deployment</span><span class="o">=</span><span class="s2">"text-embedding-3-small"</span><span class="p">))</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"postgresql://..."</span><span class="p">,</span> <span class="n">embedder</span><span class="o">=</span><span class="n">OpenAIEmbedder</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"text-embedding-3-small"</span><span class="p">))</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"postgresql://..."</span><span class="p">,</span> <span class="n">embedder</span><span class="o">=</span><span class="k">lambda</span> <span class="n">texts</span><span class="p">:</span> <span class="n">my_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="6-tell-it-things-directly">6. Tell it things directly<a class="headerlink" href="#6-tell-it-things-directly" title="Permanent link">&para;</a></h2>
+<p>Conversation fills memory by itself. When your <em>code</em> knows something, write it to the right kind directly.
+For example, to load the plant's runbooks into shared knowledge, or to record a decision from a change ticket:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">semantic</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"runbooks/line3.md"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">source</span><span class="o">=</span><span class="s2">"line3-runbook"</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">"operations"</span><span class="p">)</span>  <span class="c1"># shared</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">procedures</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Recalibrate the line 3 encoder"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>                      <span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="s2">"Stop the line"</span><span class="p">,</span> <span class="s2">"Run the calibration wizard"</span><span class="p">,</span> <span class="s2">"Verify 10 cycles"</span><span class="p">])</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">decisions</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">"Historian"</span><span class="p">,</span> <span class="n">chosen</span><span class="o">=</span><span class="s2">"InfluxDB"</span><span class="p">,</span> <span class="n">rationale</span><span class="o">=</span><span class="s2">"retention policies"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">goals</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Cut changeover time to 15 minutes"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="s2">"high"</span><span class="p">,</span> <span class="n">due</span><span class="o">=</span><span class="s2">"2027-03-31"</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Asha"</span><span class="p">,</span> <span class="s2">"reports_to"</span><span class="p">,</span> <span class="s2">"Ravi"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">memory</span><span class="o">.</span><span class="n">procedures</span><span class="o">.</span><span class="n">add_rule</span><span class="p">(</span><span class="s2">"Always cite the ticket number"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">)</span>       <span class="c1"># a standing instruction</span>
+</code></pre></div>
+<p><a href="../memory-types/">Memory types</a> describes all fifteen kinds and their APIs. Each kind has a runnable recipe in
+the <a href="../cookbook/">cookbook</a>.</p>
+<hr />
+<h2 id="7-let-a-model-manage-memory">7. Let a model manage memory<a class="headerlink" href="#7-let-a-model-manage-memory" title="Permanent link">&para;</a></h2>
+<p>The offline intelligence covers common phrasings in English. For open-ended conversations, other languages, or
+subtler updates, give it a model. One call per turn decides every memory operation. Kioko still skips trivial
+turns without a call, validates what the model proposes, drops secrets, and falls back to the offline rules if
+the model fails.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>                                   <span class="c1"># any prompt -&gt; text function</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">reply</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"AZURE_OPENAI_DEPLOYMENT"</span><span class="p">],</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>                                           <span class="n">response_format</span><span class="o">=</span><span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"json_object"</span><span class="p">},</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>                                           <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}])</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">return</span> <span class="n">reply</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">kioko</span><span class="o">.</span><span class="n">intelligent</span><span class="p">(</span><span class="s2">"postgresql://..."</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">ask</span><span class="p">)</span>        <span class="c1"># routing, reflection and summaries use the model</span>
+</code></pre></div>
+<p>Before you rely on it, preview what it decides:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">report</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">manage</span><span class="p">(</span><span class="s2">"Downtime is already down 12%."</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>       <span class="c1"># goal.progress "Cut unplanned downtime on line 3 by 20%" -&gt; 60%</span>
+</code></pre></div>
+<p><a href="../intelligence/">Intelligence</a> covers how both modes decide, the operations, the retrieval plans, maintenance,
+measured savings and the research behind it.</p>
+<h3 id="how-memories-connect">How memories connect<a class="headerlink" href="#how-memories-connect" title="Permanent link">&para;</a></h3>
+<p>With an intelligence (or <code>auto_link=True</code>), every memory is linked to related memories as it is written, and
+<code>recall()</code> follows the links. You don't have to do anything; it helps to know how to look:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">links</span><span class="p">(</span><span class="n">memory_id</span><span class="p">):</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="o">.</span><span class="n">line</span><span class="p">(),</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">link</span><span class="o">.</span><span class="n">why</span><span class="p">)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># decision "use pgvector because we already run Postgres" serves goal "Ship the Kioko memory layer ..." - via Kioko uses pgvector</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">related</span><span class="p">(</span><span class="n">memory_id</span><span class="p">)</span>          <span class="c1"># what is connected, best first, with the chain of links</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">)</span>     <span class="c1"># link memories written before linking was on (once, after an import)</span>
+</code></pre></div>
+<p>When a user tells the agent a fix worked, the fix is linked to the problem it solved; the next time the problem
+comes up, recall brings the fix along. The Graph tab of the console draws it all. <a href="../graph-memory/">Graph memory</a>
+describes the algorithm.</p>
+<hr />
+<h2 id="8-run-it-as-a-service-for-any-language">8. Run it as a service (for any language)<a class="headerlink" href="#8-run-it-as-a-service-for-any-language" title="Permanent link">&para;</a></h2>
+<p>When agents in several processes, containers or languages should share one memory, run it as a service.
+<code>--intelligence</code> makes the service manage memory by itself:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">KIOKO_API_KEY</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import secrets; print(secrets.token_urlsafe(32))'</span><span class="k">)</span><span class="s2">"</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>kioko<span class="w"> </span>serve<span class="w"> </span>--store<span class="w"> </span>postgresql://kioko:&lt;password&gt;@db:5432/kioko<span class="w"> </span>--intelligence<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8765</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>REST API   http://localhost:8765/v1        (OpenAPI document: /v1/openapi.json)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>MCP        http://localhost:8765/mcp
+</code></pre></div>
+<p>The agent loop is the same in every language: <code>POST /v1/recall</code> before the model call, <code>POST /v1/turns</code> after
+it.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">H</span><span class="o">=</span><span class="s2">"Authorization: Bearer </span><span class="nv">$KIOKO_API_KEY</span><span class="s2">"</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>localhost:8765/v1/recall<span class="w"> </span>-H<span class="w"> </span><span class="s2">"</span><span class="nv">$H</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"user_id": "asha", "session_id": "s1", "query": "What should I focus on this week?", "budget_tokens": 600}'</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>curl<span class="w"> </span>-s<span class="w"> </span>localhost:8765/v1/turns<span class="w"> </span>-H<span class="w"> </span><span class="s2">"</span><span class="nv">$H</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"user_id": "asha", "session_id": "s1", "user_message": "My goal is to get line 3 OEE above 85% by December 31.",</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="s1">       "assistant_message": "Noted."}'</span>
+</code></pre></div>
+<p>The responses, abridged:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"intents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"goals"</span><span class="p">,</span><span class="w"> </span><span class="s2">"strategy"</span><span class="p">],</span><span class="w"> </span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="nt">"tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="p">,</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;memory&gt;\n...\nThe user's open goals:\n- Get line 3 OEE above 85% by December 31 (medium, 0%, due 2026-12-31)\n&lt;/memory&gt;"</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">}</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">{</span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"added"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"memory_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goal"</span><span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">              </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goal: Get line 3 OEE above 85% by December 31."</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="p">}]}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST /v1/recall</code></td>
+<td>Everything the agent should know for a query, as a prompt-ready <code>text</code> plus the sections; hybrid, planned, within <code>budget_tokens</code></td>
+</tr>
+<tr>
+<td><code>POST /v1/turns</code></td>
+<td>After a reply: store the exchange and learn from it (managed by the intelligence when it is on)</td>
+</tr>
+<tr>
+<td><code>POST /v1/manage</code></td>
+<td>What the intelligence decides for a turn (<code>dry_run</code> to preview)</td>
+</tr>
+<tr>
+<td><code>POST /v1/plan</code> · <code>POST /v1/maintain</code> · <code>GET /v1/intelligence</code></td>
+<td>Recall plans; reflect / pin / consolidate now; intelligence status and counters</td>
+</tr>
+<tr>
+<td><code>POST /v1/context</code> · <code>POST /v1/search</code> · <code>POST /v1/learn</code></td>
+<td>The lower-level read, search and extraction calls</td>
+</tr>
+<tr>
+<td><code>POST /v1/kinds/{kind}/{operation}</code> · <code>GET /v1/kinds</code></td>
+<td>Any typed operation, e.g. <code>goals/add</code>, <code>decisions/supersede</code>, <code>graph/neighbors</code></td>
+</tr>
+<tr>
+<td><code>GET /v1/graph</code> · <code>POST /v1/consolidate</code> · <code>GET /v1/cache</code></td>
+<td>The knowledge graph, maintenance, cache statistics</td>
+</tr>
+<tr>
+<td><code>GET /v1/pins</code> · <code>POST</code>/<code>DELETE /v1/memories/{id}/pin</code></td>
+<td>Pinned (always-at-hand) memories</td>
+</tr>
+<tr>
+<td><code>POST /v1/memories</code> · <code>GET</code> · <code>GET/PATCH/DELETE /v1/memories/{id}</code> · <code>DELETE /v1/memories?user_id=</code></td>
+<td>Create, list, read, edit, delete; clear one user</td>
+</tr>
+<tr>
+<td><code>POST /v1/messages</code> · <code>GET /v1/sessions</code> · <code>GET /v1/sessions/{id}/messages</code> · <code>POST .../summarize</code> · <code>POST .../end</code> · <code>DELETE /v1/sessions/{id}</code></td>
+<td>Sessions and history</td>
+</tr>
+<tr>
+<td><code>GET /v1/events?after=&lt;seq&gt;</code> · <code>GET /v1/users</code> · <code>GET /v1/stats</code> · <code>GET /v1/info</code></td>
+<td>Activity log, users, counts, configuration</td>
+</tr>
+<tr>
+<td><code>GET /v1/health</code> · <code>GET /v1/openapi.json</code></td>
+<td>Liveness and the OpenAPI document (no key needed)</td>
+</tr>
+</tbody>
+</table>
+<p>The OpenAPI document (<code>kioko openapi --server-url https://memory.example.com &gt; openapi.json</code>) imports into
+Postman, Swagger UI, Azure API Management or a Power Platform custom connector.</p>
+<p>From Python, <code>kioko.connect("http://memory-service:8765")</code> returns a <code>RemoteMemory</code> with the same API as a
+local memory: every kind, <code>recall</code>, <code>manage</code>, <code>plan</code>, <code>pin</code> .... It reads the API key from <code>KIOKO_API_KEY</code>.
+<code>examples/rest_client.mjs</code> is a Node client, and the <a href="../cookbook/#18-the-memory-service">cookbook</a> has a
+Python one.</p>
+<p><strong>Security.</strong></p>
+<ul>
+<li>With <code>KIOKO_API_KEY</code> set, <code>/v1</code> and <code>/mcp</code> require <code>Authorization: Bearer &lt;key&gt;</code> or <code>X-API-Key</code>.</li>
+<li>Without a key, the server refuses to listen on a non-loopback address (unless you pass <code>--insecure</code>), and it
+    checks <code>Host</code> and <code>Origin</code> headers.</li>
+<li>One key grants access to every user's memories. Put a gateway in front for per-user authentication, and use
+    HTTPS outside a private network.</li>
+</ul>
+<hr />
+<h2 id="9-mcp-hosts">9. MCP hosts<a class="headerlink" href="#9-mcp-hosts" title="Permanent link">&para;</a></h2>
+<p>The same memory works as tools for Claude Desktop and Claude Code, VS Code with GitHub Copilot, Cursor, Copilot
+Studio and any other MCP client. The tools are:</p>
+<ul>
+<li><code>get_memory_context</code>, <code>search_memory</code>, <code>list_memories</code>, <code>explore_entity</code>;</li>
+<li><code>save_memory</code>, <code>learn_from_conversation</code>, <code>manage_goal</code>, <code>record_decision</code>, <code>record_lesson</code>,
+    <code>relate_entities</code>;</li>
+<li><code>update_memory</code>, <code>delete_memory</code>.</li>
+</ul>
+<p>The <strong>server</strong> decides whose memory the tools use, never the model.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"kioko"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kioko"</span><span class="p">,</span><span class="w"> </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"mcp"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--user"</span><span class="p">,</span><span class="w"> </span><span class="s2">"asha"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--intelligence"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>That is the stdio configuration for Claude Desktop or Cursor; memories go to <code>~/.kioko/memory.db</code>. Over HTTP
+(VS Code <code>.vscode/mcp.json</code>, Copilot Studio), use <code>https://&lt;host&gt;/mcp</code> with the <code>X-Kioko-User</code> and
+<code>Authorization</code> headers. The <a href="../mcp/">README</a> has the full configurations.</p>
+<hr />
+<h2 id="10-look-inside-the-console">10. Look inside: the console<a class="headerlink" href="#10-look-inside-the-console" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>kioko<span class="w"> </span>ui<span class="w"> </span>--db<span class="w"> </span>plant-memory.db<span class="w"> </span>--intelligence<span class="w"> </span>--open<span class="w">        </span><span class="c1"># http://127.0.0.1:8765</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>kioko<span class="w"> </span>ui<span class="w"> </span>--url<span class="w"> </span>http://memory-service:8765<span class="w">                   </span><span class="c1"># manage a running service from your laptop</span>
+</code></pre></div>
+<p>The console shows every user and session. You can chat with an agent and see what it recalled, injected and
+learned on each turn. You can browse, edit, pin and delete memories; inspect every kind, the graph and the
+working memory; preview the intelligence's decisions; plan and run recalls; and follow all activity live.
+<a href="../console/">Console</a> explains how to reach it on a server (an SSH tunnel or <code>--url</code>) and how to keep it safe.</p>
+<hr />
+<h2 id="11-keep-it-healthy">11. Keep it healthy<a class="headerlink" href="#11-keep-it-healthy" title="Permanent link">&para;</a></h2>
+<p>With intelligence on, maintenance runs by itself:</p>
+<ul>
+<li>sessions are summarised;</li>
+<li>recent episodes are reflected into insights;</li>
+<li>hot memories are pinned;</li>
+<li>sessions are wrapped up when a user moves on;</li>
+<li>duplicates are merged and faded episodes forgotten.</li>
+</ul>
+<p>For stores that several processes share, also run it nightly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kioko<span class="w"> </span>maintain<span class="w"> </span>--store<span class="w"> </span><span class="s2">"</span><span class="nv">$KIOKO_STORE_URL</span><span class="s2">"</span><span class="w">           </span><span class="c1"># every user: reflect, pin hot memories, consolidate</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">maintain</span><span class="p">()</span>                                    <span class="c1"># the same from Python (POST /v1/maintain over REST)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">end_session</span><span class="p">(</span><span class="s2">"tue-shift"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"asha"</span><span class="p">)</span>      <span class="c1"># when your app knows a session is over</span>
+</code></pre></div>
+<p>Keep each context small with <code>budget_tokens=</code> on <code>recall()</code>. The default is 1200. Items that do not fit are
+listed in <code>ctx.omitted</code>, and the session summary is shortened rather than dropped.</p>
+<hr />
+<h2 id="12-production-checklist">12. Production checklist<a class="headerlink" href="#12-production-checklist" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Embeddings.</strong> Use a semantic embedder (<code>AzureOpenAIEmbedder</code>, <code>OpenAIEmbedder</code>, <code>AgnoEmbedder</code> or a
+    function). After switching, run <code>memory.reembed()</code>.</li>
+<li><strong>Store.</strong> Use Postgres + pgvector or Qdrant for many processes and large memories, and SQLite for one
+    machine. Back the database up like any other.</li>
+<li><strong>Intelligence.</strong> Offline is a good start. Add <code>llm=</code> for open-ended conversations and for languages other
+    than English, because the rule-based extraction is English-only. Preview with <code>dry_run</code>, and watch the
+    <code>memory.managed</code> events.</li>
+<li><strong>Secrets and PII.</strong> <code>DropSecrets</code> is on by default: passwords, API keys, tokens, private keys and card
+    numbers are never stored, whoever proposes them. Add <code>RedactPII</code> to mask e-mails and phone numbers. Users can
+    ask the assistant to forget things, and <code>memory.clear(user_id=...)</code> / <code>DELETE /v1/memories?user_id=</code> delete a
+    user's data.</li>
+<li><strong>Service.</strong> Set <code>KIOKO_API_KEY</code>, terminate TLS in front, keep the console off the internet, and use
+    <code>--allowed-host</code> behind a proxy.</li>
+<li><strong>Several workers.</strong> The context cache lives in each process for <code>context_cache_ttl</code> seconds (15). Lower it,
+    or set it to 0 when several workers write the same users' memories.</li>
+<li><strong>Observability.</strong> Every write, recall and decision is an event. Subscribe with <code>memory.subscribe(...)</code>,
+    forward with <code>WebhookSink</code>, or poll <code>GET /v1/events</code>. <code>memory.stats()</code> and <code>GET /v1/intelligence</code> have
+    counters.</li>
+<li><strong>Python 3.14.</strong> Annotations are evaluated lazily (PEP 649). <code>attach()</code> and <code>@with_memory</code> never force them.</li>
+</ul>
+<hr />
+<h2 id="13-configuration-reference">13. Configuration reference<a class="headerlink" href="#13-configuration-reference" title="Permanent link">&para;</a></h2>
+<p><code>MemoryLayer(...)</code> (and <code>kioko.intelligent(...)</code>, which passes these through):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>store</code></td>
+<td>in-process</td>
+<td>where memories live (see <a href="../stores/">stores</a>)</td>
+</tr>
+<tr>
+<td><code>embedder</code></td>
+<td><code>HashingEmbedder()</code></td>
+<td>text → vector; any <code>Embedder</code> or a function</td>
+</tr>
+<tr>
+<td><code>extractor</code></td>
+<td><code>RuleBasedExtractor()</code></td>
+<td>conversation → memory candidates (<code>LLMExtractor(llm)</code> for open-ended text)</td>
+</tr>
+<tr>
+<td><code>intelligence</code></td>
+<td><code>None</code></td>
+<td><code>True</code>, <code>Intelligence(llm=...)</code> or any object with <code>manage()</code></td>
+</tr>
+<tr>
+<td><code>processors</code></td>
+<td><code>[DropSecrets()]</code></td>
+<td>write pipeline: drop or transform candidates</td>
+</tr>
+<tr>
+<td><code>summarizer</code></td>
+<td><code>ExtractiveSummarizer()</code></td>
+<td>session summaries (<code>LLMSummarizer(llm)</code>)</td>
+</tr>
+<tr>
+<td><code>dedup_threshold</code> / <code>contradiction_threshold</code></td>
+<td>0.9 / 0.8</td>
+<td>when a write reinforces, or supersedes, an existing memory</td>
+</tr>
+<tr>
+<td><code>auto_graph</code></td>
+<td><code>False</code> (<code>True</code> in <code>intelligent()</code>)</td>
+<td>extract graph relations from conversation</td>
+</tr>
+<tr>
+<td><code>embedding_cache</code> / <code>context_cache_ttl</code></td>
+<td>4096 / 15 s</td>
+<td>caches (<code>0</code> disables)</td>
+</tr>
+<tr>
+<td><code>tokenizer</code></td>
+<td>~4 characters per token</td>
+<td>token counting for budgets</td>
+</tr>
+<tr>
+<td><code>history_store</code> / <code>event_store</code></td>
+<td>the store, if it supports them</td>
+<td>where session history and events go</td>
+</tr>
+</tbody>
+</table>
+<p><code>Intelligence(...)</code> options: <code>llm</code>, <code>capture</code> (<code>"rules"</code>, <code>"selective"</code> or <code>"all"</code>), <code>min_importance</code> (0.4),
+<code>plan_with_llm</code>, <code>background</code>, and the scheduler's <code>summarize_every</code> (10), <code>reflect_after</code> (2.5),
+<code>pin_threshold</code> (5), <code>max_pinned</code> (5), <code>pin_every</code> (10) and <code>consolidate_every</code> (200). See
+<a href="../intelligence/#customising">intelligence</a>.</p>
+<p>Environment variables:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KIOKO_API_KEY</code></td>
+<td>the service's key, and <code>RemoteMemory</code>'s default</td>
+</tr>
+<tr>
+<td><code>KIOKO_URL</code></td>
+<td><code>connect()</code> / <code>attach()</code> / CLI commands when no target is given</td>
+</tr>
+<tr>
+<td><code>KIOKO_DB</code></td>
+<td>the default SQLite path for the CLI</td>
+</tr>
+<tr>
+<td><code>KIOKO_PG_DSN</code> (or <code>DATABASE_URL</code>)</td>
+<td><code>PgVectorStore()</code> without a DSN</td>
+</tr>
+<tr>
+<td><code>QDRANT_API_KEY</code></td>
+<td><code>QdrantStore()</code> without <code>api_key=</code></td>
+</tr>
+<tr>
+<td><code>KIOKO_USER</code></td>
+<td>the default user of <code>kioko mcp</code></td>
+</tr>
+</tbody>
+</table>
+<p>CLI (every command takes <code>--db PATH</code>, <code>--store URL</code> or <code>--config JSON</code>; most take <code>--url</code> for a service; and
+<code>--intelligence</code> / <code>--intelligence-llm MODULE:FUNCTION</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>kioko serve | ui | mcp                 run the service / the console / an MCP server over stdio
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>kioko recall "question" --user U       the block an agent would get   (--session, --budget, --plan, --json)
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>kioko manage "text" --user U           what the intelligence decides   (--reply, --session, --dry-run, --json)
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>kioko plan "question" --user U         which kinds a question needs
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>kioko maintain [--user U]              reflect, pin hot memories, consolidate   (--tasks reflect,pin,consolidate)
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>kioko kinds | list | search | add | context | consolidate | components | openapi | demo
+</code></pre></div>
+<hr />
+<h2 id="14-troubleshooting">14. Troubleshooting<a class="headerlink" href="#14-troubleshooting" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>"Nothing to remember (only questions or requests)."</strong> The gate skips turns that hold no information, such
+    as questions and requests to the assistant. That is intended. Say it as a statement ("I'm based in Oslo"), or
+    use <code>memory.add(...)</code> / <code>memory.facts.add(...)</code>.</li>
+<li><strong>A statement was not kept.</strong> Look at the report: <code>memory.manage(text, user_id=..., dry_run=True).summary()</code>.
+    Unrecognised statements are kept only above <code>min_importance</code>. Use <code>capture="all"</code>, add an extraction rule
+    (<code>RuleBasedExtractor(extra_rules=[Rule(...)])</code>), or give the intelligence a model.</li>
+<li><strong>Recall misses something obvious.</strong> With the default lexical embedder, "car" does not match "automobile".
+    Switch to a semantic embedder and run <code>memory.reembed()</code>. To see why each memory was or was not recalled,
+    use the console's Recall tab (signals and scores).</li>
+<li><strong>pgvector: "permission denied to create extension vector".</strong> Have an administrator run
+    <code>CREATE EXTENSION vector;</code> once in the database.</li>
+<li><strong>Qdrant: wrong vector size.</strong> A collection has one size. Use a new <code>collection=</code> after changing embedders.</li>
+<li><strong>The console says "Not self-managing".</strong> Start it with <code>--intelligence</code>, or open a memory built with
+    <code>kioko.intelligent()</code>. Previews in the Intelligence tab work either way.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../whats-inside/" class="md-footer__link md-footer__link--next" aria-label="Next: What&#39;s inside">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                What's inside
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Kioko · MIT License
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/kioko/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

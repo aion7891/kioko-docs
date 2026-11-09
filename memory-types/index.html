@@ -1,0 +1,2094 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Pluggable, self-managing long-term memory for AI agents">
+      
+      
+      
+        <link rel="canonical" href="https://aion7891.github.io/kioko-docs/memory-types/">
+      
+      
+        <link rel="prev" href="../concepts/">
+      
+      
+        <link rel="next" href="../intelligence/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Memory types - Kioko</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#memory-types" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kioko" class="md-header__button md-logo" aria-label="Kioko" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kioko
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Memory types
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guide/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Memory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../attach/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Use it
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cookbook/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cookbook
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../deploy/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Production
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kioko" class="md-nav__button md-logo" aria-label="Kioko" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"/></svg>
+
+    </a>
+    Kioko
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whats-inside/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's inside
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Memory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory types
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-profile-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Profile memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-factual-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Factual memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-semantic-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Semantic memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-episodic-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Episodic memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-working-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Working memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conversational-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Conversational memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-goal-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Goal memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-procedural-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Procedural memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-skill-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Skill memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-strategy-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Strategy memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-decision-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Decision memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-graph-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Graph memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-kv-cache-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. KV-cache memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-parametric-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Parametric memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-hybrid-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Hybrid memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-ideas-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the ideas come from
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intelligence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intelligence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use it
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Use it
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attach to any agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service and REST API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webhooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webhooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy and operate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extend Kioko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-profile-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Profile memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-factual-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Factual memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-semantic-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Semantic memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-episodic-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Episodic memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-working-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Working memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conversational-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Conversational memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-goal-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Goal memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-procedural-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Procedural memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-skill-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Skill memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-strategy-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Strategy memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-decision-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Decision memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-graph-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Graph memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-kv-cache-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. KV-cache memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-parametric-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Parametric memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-hybrid-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Hybrid memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-ideas-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the ideas come from
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="memory-types">Memory types<a class="headerlink" href="#memory-types" title="Permanent link">&para;</a></h1>
+<p>Kioko has fifteen kinds of memory. Each one is an ordinary memory record: a <code>memory_type</code>, structured
+<code>metadata</code> and, where it makes sense, a slot <code>key</code>. That has three consequences:</p>
+<ul>
+<li>every store supports every kind (in-process, SQLite, Postgres + pgvector, Qdrant, a remote service);</li>
+<li>every kind gets the same pipeline: secret filtering, de-duplication, version history, events, and the
+    console's views;</li>
+<li>one <code>recall()</code> can search every kind together.</li>
+</ul>
+<p>Each kind has a typed manager on the memory object (<code>memory.goals</code>, <code>memory.graph</code>,
+<code>memory.working(session)</code> ...). The managers use only the public memory API, so the same code runs on a local
+<code>MemoryLayer</code> and on a <code>RemoteMemory</code> client.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Kind</th>
+<th>Accessor</th>
+<th>Remembers</th>
+<th>In the context</th>
+<th>Recipe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Profile</td>
+<td><code>memory.profile</code></td>
+<td>who the user is, one value per slot</td>
+<td>always, <em>About the user</em></td>
+<td><a href="../cookbook/#01-profile-memory">01</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Factual</td>
+<td><code>memory.facts</code></td>
+<td>facts and preferences, with confidence</td>
+<td>when relevant</td>
+<td><a href="../cookbook/#02-factual-memory">02</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Semantic</td>
+<td><code>memory.semantic</code></td>
+<td>domain knowledge, shared or personal</td>
+<td>when relevant, <em>Background knowledge</em></td>
+<td><a href="../cookbook/#03-semantic-memory">03</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Episodic</td>
+<td><code>memory.episodes</code></td>
+<td>events with when / where / who / outcome</td>
+<td>when relevant</td>
+<td><a href="../cookbook/#04-episodic-memory">04</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Working</td>
+<td><code>memory.working(session)</code></td>
+<td>the current task's scratchpad</td>
+<td>always for the session</td>
+<td><a href="../cookbook/#05-working-memory">05</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Conversational</td>
+<td><code>memory.conversation(session)</code></td>
+<td>rolling summary + recent turns</td>
+<td>the session summary</td>
+<td><a href="../cookbook/#06-conversational-memory">06</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Goal</td>
+<td><code>memory.goals</code></td>
+<td>objectives, progress, due dates</td>
+<td>always, <em>Open goals</em></td>
+<td><a href="../cookbook/#07-goal-memory">07</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Procedural</td>
+<td><code>memory.procedures</code></td>
+<td>how-tos with versioned steps; standing rules</td>
+<td>matching procedures; rules always</td>
+<td><a href="../cookbook/#08-procedural-memory">08</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Skill</td>
+<td><code>memory.skills</code></td>
+<td>reusable prompts, tools, code, with a track record</td>
+<td>matching skills</td>
+<td><a href="../cookbook/#09-skill-memory">09</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Strategy</td>
+<td><code>memory.strategies</code></td>
+<td>what worked for which kind of task</td>
+<td>matching lessons</td>
+<td><a href="../cookbook/#10-strategy-memory">10</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Decision</td>
+<td><code>memory.decisions</code></td>
+<td>decisions with rationale and history</td>
+<td>matching decisions</td>
+<td><a href="../cookbook/#11-decision-memory">11</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Graph</td>
+<td><code>memory.graph</code></td>
+<td>entities and relations, with time</td>
+<td>relations around named entities</td>
+<td><a href="../cookbook/#12-graph-memory">12</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>KV cache</td>
+<td><code>memory.kv</code></td>
+<td>cacheable prompt prefix, embedding and context caches</td>
+<td>the stable prefix</td>
+<td><a href="../cookbook/#13-kv-cache-memory">13</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Parametric</td>
+<td><code>memory.parametric</code></td>
+<td>the bridge to fine-tuned weights</td>
+<td>consolidated memories left out</td>
+<td><a href="../cookbook/#14-parametric-memory">14</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Hybrid</td>
+<td><code>memory.recall()</code> / <code>memory.hybrid</code></td>
+<td>one retrieval over every kind and representation</td>
+<td>the whole block</td>
+<td><a href="../cookbook/#15-hybrid-memory">15</a></td>
+</tr>
+</tbody>
+</table>
+<p>On top of the kinds sit <strong>pinned memories</strong>: hot memories in a <em>Keep in mind</em> section that always rides in the
+cacheable prefix (see <a href="../intelligence/#maintenance-sleep-time">intelligence</a>). They are not a kind of their
+own, and any fact, knowledge item, procedure, skill, lesson or decision can be pinned.</p>
+<p>You rarely need to call the managers yourself. <code>memory.learn()</code> / <code>record_turn()</code> fill the kinds from
+conversation, and <a href="../intelligence/">the intelligence</a> also updates them: progress on goals, superseded
+decisions, outcomes of procedures. The APIs below are for when your code knows something directly, or for tools
+your agent calls.</p>
+<p>All examples use <code>user = "robin"</code> and <code>from kioko import MemoryLayer; memory = MemoryLayer()</code>.</p>
+<hr />
+<h2 id="1-profile-memory">1. Profile memory<a class="headerlink" href="#1-profile-memory" title="Permanent link">&para;</a></h2>
+<p>Stable facts about who the user is: name, location, employer, role, languages, manager, time zone. Each slot
+holds <strong>one value</strong>. A new value replaces the old one, and the old one stays in the record's history. Profile
+slots are ordinary memories keyed <code>profile.&lt;slot&gt;</code>. The rule extractor writes the same keys, so "I moved to
+Rotterdam" from a conversation updates the same slot.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span> <span class="s2">"Oslo"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span> <span class="s2">"Edinburgh"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>            <span class="c1"># updated, not duplicated</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>                  <span class="c1"># {'location': 'Edinburgh'}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># previous values with timestamps</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"phone_number"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> always included (<em>About the user</em>), and part of the cacheable prefix.</p>
+<h2 id="2-factual-memory">2. Factual memory<a class="headerlink" href="#2-factual-memory" title="Permanent link">&para;</a></h2>
+<p>Durable statements about the user or their world ("User's team has 6 engineers") and preferences ("User
+prefers concise answers").</p>
+<ul>
+<li>A fact can carry a slot <code>key</code>; a new value for the key updates it.</li>
+<li>It can carry a <code>confidence</code> and be marked verified.</li>
+<li>Contradictions supersede automatically: "doesn't like hiking anymore" replaces "likes hiking".</li>
+<li>Near-duplicates reinforce the existing memory instead of adding one.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">facts</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"User's manager is Natalie"</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"work.manager"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">facts</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"User prefers metric units"</span><span class="p">,</span> <span class="n">preference</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">facts</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">facts</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"units"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> the <em>Relevant memories</em> section, ranked by the query.</p>
+<h2 id="3-semantic-memory">3. Semantic memory<a class="headerlink" href="#3-semantic-memory" title="Permanent link">&para;</a></h2>
+<p>General or domain knowledge: product facts, policies, definitions, runbooks. It is not about a user. By
+default it lives in the <strong>shared</strong> namespace (<code>@shared</code>), which every user's context can draw on. Pass
+<code>user_id=</code> to keep knowledge personal, or <code>namespace=</code> for a team or product scope. <code>ingest()</code> splits a
+document into searchable chunks. Re-ingesting the same <code>source</code> updates the chunks instead of duplicating them.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">semantic</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"OPC UA servers listen on TCP port 4840 by default"</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">"iiot"</span><span class="p">)</span>      <span class="c1"># shared</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">semantic</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"runbook.md"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">source</span><span class="o">=</span><span class="s2">"runbook-v3"</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">"operations"</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">semantic</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"default OPC UA port"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>      <span class="c1"># the user's own + shared knowledge</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">semantic</span><span class="o">.</span><span class="n">forget_source</span><span class="p">(</span><span class="s2">"runbook-v2"</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> <em>Background knowledge</em>, from the user's own knowledge and the shared base. Knowledge that the
+intelligence learns from a conversation stays in the user's own scope.</p>
+<h2 id="4-episodic-memory">4. Episodic memory<a class="headerlink" href="#4-episodic-memory" title="Permanent link">&para;</a></h2>
+<p>What happened, when, where, with whom and how it ended. These are time-stamped experiences. Repeated events
+are separate episodes (two gym visits are two episodes), so episodes are never de-duplicated. As they age,
+<code>consolidate()</code> folds clusters of similar old episodes into summary memories. Faded episodes are forgotten:
+the score is importance × recency × how often they were recalled.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">episodes</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">"Presented the predictive-maintenance demo to the plant team"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                       <span class="n">when</span><span class="o">=</span><span class="s2">"2026-10-20"</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">"Oslo plant"</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="p">[</span><span class="s2">"Natalie"</span><span class="p">],</span> <span class="n">outcome</span><span class="o">=</span><span class="s2">"approved for a pilot"</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">episodes</span><span class="o">.</span><span class="n">timeline</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">since</span><span class="o">=</span><span class="s2">"2026-10-01"</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">episodes</span><span class="o">.</span><span class="n">recent</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">episodes</span><span class="o">.</span><span class="n">consolidate</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">older_than_days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> <em>Relevant memories</em>. For "when did ..." questions the planner asks for more of them and hybrid
+recall weighs recency.</p>
+<h2 id="5-working-memory">5. Working memory<a class="headerlink" href="#5-working-memory" title="Permanent link">&para;</a></h2>
+<p>The scratchpad for the task at hand: the current task, intermediate results, ticket numbers, open questions.</p>
+<ul>
+<li>It is <strong>session-scoped</strong>.</li>
+<li>It is <strong>small</strong>: <code>capacity=10</code> items; the least recently updated item is evicted first.</li>
+<li>It <strong>expires</strong>: <code>ttl_seconds</code> defaults to 6 hours.</li>
+<li>It is <strong>never embedded</strong>, so writing it costs nothing.</li>
+</ul>
+<p>It never pollutes long-term memory unless an item is promoted.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">wm</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">working</span><span class="p">(</span><span class="s2">"shift-1"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">wm</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"task"</span><span class="p">,</span> <span class="s2">"Fix the E-217 fault on line 3"</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">wm</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"ticket"</span><span class="p">,</span> <span class="s2">"INC-4521"</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">wm</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>                          <span class="c1"># {'task': ..., 'ticket': ...}</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">wm</span><span class="o">.</span><span class="n">promote</span><span class="p">(</span><span class="s2">"root_cause"</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">"fact"</span><span class="p">)</span>      <span class="c1"># keep a conclusion long-term</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">memory</span><span class="o">.</span><span class="n">end_session</span><span class="p">(</span><span class="s2">"shift-1"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>       <span class="c1"># lasting slots -&gt; an episode, then cleared</span>
+</code></pre></div>
+<p><strong>Context:</strong> always included for the session (<em>Current task notes</em>). The intelligence fills it from what the
+user says: the task, ticket and work-order numbers, error codes, links and file paths.</p>
+<h2 id="6-conversational-memory">6. Conversational memory<a class="headerlink" href="#6-conversational-memory" title="Permanent link">&para;</a></h2>
+<p>The dialogue of one session, kept at constant size however long it gets: the last <code>keep_last</code> turns verbatim,
+and everything older folded into a rolling summary (<code>session:&lt;id&gt;:summary</code>) once more than <code>summarize_after</code>
+messages are not yet covered. The summary is written by the configured summarizer: extractive offline, or
+<code>LLMSummarizer(llm)</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">chat</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">conversation</span><span class="p">(</span><span class="s2">"s1"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">keep_last</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">summarize_after</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">chat</span><span class="o">.</span><span class="n">add_turn</span><span class="p">(</span><span class="s2">"How do I reset the relay?"</span><span class="p">,</span> <span class="s2">"Switch off the breaker, then ..."</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">chat</span><span class="o">.</span><span class="n">as_messages</span><span class="p">(</span><span class="n">system</span><span class="o">=</span><span class="s2">"You are a plant support agent."</span><span class="p">)</span>      <span class="c1"># summary + recent turns, ready for an LLM</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">chat</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="n">max_tokens</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> <em>Earlier in this session</em> (the summary). <code>history_turns=</code> adds the last turns verbatim.</p>
+<h2 id="7-goal-memory">7. Goal memory<a class="headerlink" href="#7-goal-memory" title="Permanent link">&para;</a></h2>
+<p>What the user, or the agent, is working towards. A goal has:</p>
+<ul>
+<li>a status: <code>active</code>, <code>blocked</code>, <code>paused</code>, <code>done</code> or <code>dropped</code>;</li>
+<li>a priority: <code>low</code>, <code>medium</code>, <code>high</code> or <code>critical</code>;</li>
+<li>progress from 0 to 1;</li>
+<li>an optional due date, success criteria, a reason, and a parent for sub-goals;</li>
+<li>an update trail.</li>
+</ul>
+<p>Open goals are always in the agent's view, most important first, then the soonest due. Overdue goals are
+flagged.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">goal</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">goals</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Ship Kioko 1.0"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="s2">"high"</span><span class="p">,</span> <span class="n">due</span><span class="o">=</span><span class="s2">"2026-12-15"</span><span class="p">,</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                        <span class="n">criteria</span><span class="o">=</span><span class="s2">"published and installable"</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">goals</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Write the cookbook"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">goal</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">goals</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">note</span><span class="o">=</span><span class="s2">"all kinds done"</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">goals</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">memory</span><span class="o">.</span><span class="n">goals</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> always included (<em>The user's open goals</em>), and part of the cacheable prefix. The intelligence
+records progress ("I'm 60% done with ..."), completion ("I shipped ...") and dropped goals ("I gave up on ...")
+from conversation.</p>
+<h2 id="8-procedural-memory">8. Procedural memory<a class="headerlink" href="#8-procedural-memory" title="Permanent link">&para;</a></h2>
+<p><strong>How to do things.</strong> A procedure has named, ordered steps, an optional <em>when to use</em>, preconditions and tools.
+Changing the steps creates a new version, and the old text stays in history. It also keeps a success and
+failure record, so <code>find()</code> prefers procedures that work. <strong>Standing rules</strong> ("Always cite the ticket number")
+are procedural memory at the prompt level: <code>add_rule()</code> stores them as instructions that are always applied.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">procedures</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Reset the safety relay"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">when_to_use</span><span class="o">=</span><span class="s2">"the relay trips"</span><span class="p">,</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                      <span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="s2">"Switch off the main breaker"</span><span class="p">,</span> <span class="s2">"Press reset for 5 seconds"</span><span class="p">,</span> <span class="s2">"Switch the breaker on"</span><span class="p">])</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">procedures</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"the relay tripped again"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">procedures</span><span class="o">.</span><span class="n">record_outcome</span><span class="p">(</span><span class="s2">"Reset the safety relay"</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">procedures</span><span class="o">.</span><span class="n">add_rule</span><span class="p">(</span><span class="s2">"Always cite the ticket number"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> matching procedures in <em>Procedures that may apply</em>; rules in <em>Instructions</em>. When the user says
+"that worked" or "still broken", the intelligence credits the outcome to the procedure the agent just used.</p>
+<h2 id="9-skill-memory">9. Skill memory<a class="headerlink" href="#9-skill-memory" title="Permanent link">&para;</a></h2>
+<p>Reusable capabilities: prompts, tools, code and workflows (<code>kind="prompt" | "tool" | "code" | "workflow"</code>).
+Each skill has a description, a body, inputs and a usage record (successes, failures, latency). <code>find()</code> ranks
+by <strong>relevance × reliability</strong>. Reliability is the Wilson lower bound of the success rate, so 3 successes out
+of 3 rank below 90 out of 100.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"summarize alarm log"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Top recurring faults from a PLC alarm log"</span><span class="p">,</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>                  <span class="n">body</span><span class="o">=</span><span class="s2">"Summarize these alarms by fault code and count: </span><span class="si">{alarms}</span><span class="s2">"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">skill</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"summarise the alarms from line 3"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">render_prompt</span><span class="p">(</span><span class="n">skill</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">alarms</span><span class="o">=</span><span class="s2">"E-217 x12, E-301 x4"</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">skills</span><span class="o">.</span><span class="n">record_use</span><span class="p">(</span><span class="n">skill</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">latency_ms</span><span class="o">=</span><span class="mi">820</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> <em>Skills you can use</em>.</p>
+<h2 id="10-strategy-memory">10. Strategy memory<a class="headerlink" href="#10-strategy-memory" title="Permanent link">&para;</a></h2>
+<p>Lessons about <strong>what works for which kind of task</strong>, in the style of Reflexion and ExpeL. Each
+<code>reflect(task_type, approach, outcome)</code> updates the approach's track record (<code>success</code>, <code>partial</code>,
+<code>failure</code>) and its lessons. <code>recommend()</code> returns approaches that worked, and <code>avoid()</code> returns those that
+mostly failed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">strategies</span><span class="o">.</span><span class="n">reflect</span><span class="p">(</span><span class="s2">"debugging drives"</span><span class="p">,</span> <span class="s2">"check the encoder cable first"</span><span class="p">,</span> <span class="s2">"success"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">strategies</span><span class="o">.</span><span class="n">reflect</span><span class="p">(</span><span class="s2">"debugging drives"</span><span class="p">,</span> <span class="s2">"replace the drive"</span><span class="p">,</span> <span class="s2">"failure"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>                          <span class="n">lesson</span><span class="o">=</span><span class="s2">"expensive and rarely the cause"</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">strategies</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="s2">"drive fault on line 3"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">strategies</span><span class="o">.</span><span class="n">avoid</span><span class="p">(</span><span class="s2">"drive fault on line 3"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> <em>Lessons from earlier attempts</em>. "Lesson learned: ..." in conversation becomes a strategy.</p>
+<h2 id="11-decision-memory">11. Decision memory<a class="headerlink" href="#11-decision-memory" title="Permanent link">&para;</a></h2>
+<p>A decision log in the style of architecture decision records. Each decision has a title (the question), the
+chosen option, the options considered, the rationale, the context, a status (<code>proposed</code>, <code>accepted</code>,
+<code>superseded</code> or <code>reverted</code>), an outcome and a review date. A new decision on the same question
+<strong>supersedes</strong> the old one, and the two are linked, so <code>chain()</code> shows how a decision evolved and a title
+always resolves to the current decision.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">decisions</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">"Vector store"</span><span class="p">,</span> <span class="n">chosen</span><span class="o">=</span><span class="s2">"Qdrant"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">"Qdrant"</span><span class="p">,</span> <span class="s2">"pgvector"</span><span class="p">],</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                        <span class="n">rationale</span><span class="o">=</span><span class="s2">"fast to set up"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">decisions</span><span class="o">.</span><span class="n">supersede</span><span class="p">(</span><span class="s2">"Vector store"</span><span class="p">,</span> <span class="n">chosen</span><span class="o">=</span><span class="s2">"pgvector"</span><span class="p">,</span> <span class="n">rationale</span><span class="o">=</span><span class="s2">"we already run Postgres"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">chosen</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">memory</span><span class="o">.</span><span class="n">decisions</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="s2">"Vector store"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)]</span>      <span class="c1"># ['Qdrant', 'pgvector']</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">decisions</span><span class="o">.</span><span class="n">set_outcome</span><span class="p">(</span><span class="s2">"Vector store"</span><span class="p">,</span> <span class="s2">"query latency halved"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Context:</strong> current decisions in <em>Earlier decisions</em>; superseded ones are left out. The intelligence turns
+"we switched from Qdrant to pgvector because ..." into a supersede.</p>
+<h2 id="12-graph-memory">12. Graph memory<a class="headerlink" href="#12-graph-memory" title="Permanent link">&para;</a></h2>
+<p>A <strong>temporal knowledge graph</strong> of entities (people, teams, systems, places) and relations
+(<code>subject -predicate-&gt; object</code>).</p>
+<ul>
+<li>Single-valued predicates (<code>lives_in</code>, <code>works_at</code>, <code>reports_to</code>, <code>has_manager</code> ...) replace their old object
+    and keep it as history with the period it was valid.</li>
+<li>Entities can have types and aliases.</li>
+<li><code>neighbors()</code>, <code>path()</code> and <code>about()</code> answer multi-hop questions.</li>
+<li>With <code>auto_graph=True</code> (on by default in <code>kioko.intelligent()</code>), relations are extracted from conversation.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Robin"</span><span class="p">,</span> <span class="s2">"reports_to"</span><span class="p">,</span> <span class="s2">"Natalie"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Natalie"</span><span class="p">,</span> <span class="s2">"leads"</span><span class="p">,</span> <span class="s2">"Robotics architecture"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span><span class="s2">"Natalie"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"person"</span><span class="p">,</span> <span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s2">"Nat"</span><span class="p">],</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">"Natalie"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="s2">"Robin"</span><span class="p">,</span> <span class="s2">"Robotics architecture"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">relations</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="s2">"2026-01-01"</span><span class="p">)</span>     <span class="c1"># the graph as it was on a date</span>
+</code></pre></div>
+<p><strong>Context:</strong> <em>Known relationships</em> around the entities the query names. Hybrid recall also uses graph
+mentions as a ranking signal.</p>
+<p><strong>Memory links: the second layer.</strong> Graph memory also connects the <em>memories</em> themselves. Each new memory is
+linked to the memories it is related to, with a type and the evidence: a decision <em>serves</em> a goal, a lesson
+<em>refines</em> a procedure, a fix <em>resolves</em> an incident, an insight <em>is derived from</em> its episodes. The evidence is
+shared entities and rare words, meaning, a relation in the entity graph above ("Kioko uses pgvector" connects a
+pgvector decision to a Kioko goal), and the same session. Recall follows the links (spreading activation) and the
+context gains a <em>How these memories connect</em> section. The full algorithm, with formulas and worked examples, is in
+<a href="../graph-memory/">Graph memory</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">links</span><span class="p">(</span><span class="n">memory_id</span><span class="p">)</span>                  <span class="c1"># [MemoryLink]: decision "use pgvector" serves goal "Ship Kioko"</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">related</span><span class="p">(</span><span class="n">memory_id</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>       <span class="c1"># what is connected, best first, with the chain of links</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>                     <span class="c1"># the evidence, and whether the algorithm links them</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"resolves"</span><span class="p">)</span>       <span class="c1"># by hand (never fades)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>             <span class="c1"># link memories written before linking was on</span>
+</code></pre></div>
+<p><strong>Context:</strong> <em>How these memories connect</em>, the links among the memories in the block, plus up to <code>links</code>
+memories brought in by their links (the recall plan sets how many).</p>
+<h2 id="13-kv-cache-memory">13. KV-cache memory<a class="headerlink" href="#13-kv-cache-memory" title="Permanent link">&para;</a></h2>
+<p>Memory that saves compute rather than storing facts.</p>
+<ol>
+<li><strong>Prompt-prefix caching.</strong> <code>memory.kv</code> lays a request out with the stable part first: instructions,
+      profile, goals and pinned memories, sorted deterministically, so the prefix is byte-identical from turn to
+      turn. Provider prompt caches can then serve it. It has helpers for Anthropic (a <code>cache_control</code> breakpoint,
+      optional 1-hour <code>ttl</code>) and OpenAI (stable system message first, <code>prompt_cache_key</code>). The same layout works
+      with vLLM's prefix caching or llama.cpp's <code>cache_prompt</code>.</li>
+<li><strong>An embedding cache.</strong> Each distinct text is embedded once (<code>embedding_cache=4096</code>).</li>
+<li><strong>A context cache.</strong> An identical <code>context()</code> call within <code>context_cache_ttl</code> seconds (15) is served from
+      memory, unless a write changed the user's memories in between.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">prefix</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">kv</span><span class="o">.</span><span class="n">prefix</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>               <span class="c1"># .text .hash .tokens .reused .sections</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">system</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">kv</span><span class="o">.</span><span class="n">anthropic_system</span><span class="p">(</span><span class="s2">"Which PLCs do we use?"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">base_system</span><span class="o">=</span><span class="n">SYSTEM</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="s2">"1h"</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">messages</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">kv</span><span class="o">.</span><span class="n">openai_messages</span><span class="p">(</span><span class="s2">"Which PLCs do we use?"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">base_system</span><span class="o">=</span><span class="n">SYSTEM</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">kv</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>                                      <span class="c1"># prefix reuse, cache hit rates</span>
+</code></pre></div>
+<h2 id="14-parametric-memory">14. Parametric memory<a class="headerlink" href="#14-parametric-memory" title="Permanent link">&para;</a></h2>
+<p>The bridge to <strong>model weights</strong>. Stable, much-used memories (facts, preferences, instructions, procedures,
+skills, decisions, knowledge) can be exported as a fine-tuning dataset. Once a model has learned them, they
+are marked as consolidated into it. <code>context(model=...)</code> then stops spending tokens on them. <code>probe()</code> checks
+with the model which memories it really answers correctly.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">parametric</span><span class="o">.</span><span class="n">export_dataset</span><span class="p">(</span><span class="s2">"train.jsonl"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"openai-chat"</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">parametric</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="s2">"ft:plant-assistant-v1"</span><span class="p">,</span> <span class="n">base_model</span><span class="o">=</span><span class="s2">"&lt;base model&gt;"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"lora"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">parametric</span><span class="o">.</span><span class="n">mark_consolidated</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">parametric</span><span class="o">.</span><span class="n">candidates</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">),</span> <span class="n">model</span><span class="o">=</span><span class="s2">"ft:plant-assistant-v1"</span><span class="p">)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">ctx</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="s2">"What controllers does line 3 use?"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"ft:plant-assistant-v1"</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="15-hybrid-memory">15. Hybrid memory<a class="headerlink" href="#15-hybrid-memory" title="Permanent link">&para;</a></h2>
+<p><strong>One retrieval over every kind and every representation.</strong> <code>recall()</code> ranks candidates four ways:</p>
+<ul>
+<li>dense similarity of embeddings;</li>
+<li>sparse BM25 over the text;</li>
+<li>graph mentions of the entities in the query;</li>
+<li>recency, only for temporal questions.</li>
+</ul>
+<p>It fuses the rankings with Reciprocal Rank Fusion (k = 60; weights dense 1, sparse 1, graph 0.8, recency 0.5),
+splits the results into the context sections, and packs the most important items into a token budget (1200 by
+default). The rest is listed in <code>ctx.omitted</code>, and a session summary that does not fit whole is shortened.
+With intelligence on, a plan by intent sizes each section first.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">ctx</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="s2">"How should I debug the OPC UA connection, and which vector store did we choose?"</span><span class="p">,</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>                    <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s2">"s1"</span><span class="p">,</span> <span class="n">budget_tokens</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">ctx</span><span class="o">.</span><span class="n">text</span>            <span class="c1"># the prompt-ready block</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">ctx</span><span class="o">.</span><span class="n">counts</span><span class="p">()</span>        <span class="c1"># items per section</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">ctx</span><span class="o">.</span><span class="n">omitted</span>         <span class="c1"># what the budget left out</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">memory</span><span class="o">.</span><span class="n">hybrid</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"OPC UA certificate"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>      <span class="c1"># the raw fused ranking, with signals</span>
+</code></pre></div>
+<hr />
+<h2 id="where-the-ideas-come-from">Where the ideas come from<a class="headerlink" href="#where-the-ideas-come-from" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Working, episodic, semantic and procedural memory</strong> follow the CoALA framework for language agents
+    (Sumers et al. 2023, <a href="https://arxiv.org/abs/2309.02427">arXiv:2309.02427</a>).</li>
+<li><strong>Episodic retrieval</strong> by recency, importance and relevance, and <strong>reflection</strong>: Generative Agents (Park et
+    al. 2023, <a href="https://arxiv.org/abs/2304.03442">arXiv:2304.03442</a>).</li>
+<li><strong>The working context, recursive summaries and archival memory</strong>: MemGPT (Packer et al. 2023,
+    <a href="https://arxiv.org/abs/2310.08560">arXiv:2310.08560</a>).</li>
+<li><strong>Strategies and lessons</strong>: Reflexion (Shinn et al. 2023, <a href="https://arxiv.org/abs/2303.11366">arXiv:2303.11366</a>)
+    and ExpeL (Zhao et al. 2023, <a href="https://arxiv.org/abs/2308.10144">arXiv:2308.10144</a>).</li>
+<li><strong>Skills</strong> as a reusable, verified library: Voyager (Wang et al. 2023,
+    <a href="https://arxiv.org/abs/2305.16291">arXiv:2305.16291</a>).</li>
+<li><strong>The temporal knowledge graph</strong> with validity periods: Zep / Graphiti (Rasmussen et al. 2025,
+    <a href="https://arxiv.org/abs/2501.13956">arXiv:2501.13956</a>).</li>
+<li><strong>Memory updates</strong>: Mem0 (Chhikara et al. 2025, <a href="https://arxiv.org/abs/2504.19413">arXiv:2504.19413</a>).</li>
+<li><strong>Linked, evolving notes</strong>: A-MEM (Xu et al. 2025, <a href="https://arxiv.org/abs/2502.12110">arXiv:2502.12110</a>).</li>
+<li><strong>Plaintext, activation (KV) and parametric memory</strong>: MemOS (Li et al. 2025,
+    <a href="https://arxiv.org/abs/2505.22101">arXiv:2505.22101</a>).</li>
+<li><strong>Reciprocal Rank Fusion</strong>: Cormack, Clarke and Büttcher, SIGIR 2009.</li>
+<li><strong>Decision records</strong>: Michael Nygard, "Documenting Architecture Decisions" (2011).</li>
+</ul>
+<p>The intelligence that manages these kinds has its own list in <a href="../intelligence/#research-basis">intelligence.md</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../concepts/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Concepts">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Concepts
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../intelligence/" class="md-footer__link md-footer__link--next" aria-label="Next: Intelligence">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Intelligence
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Kioko · MIT License
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/kioko/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
